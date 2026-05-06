@@ -1212,7 +1212,7 @@
     const iconPlay  = document.getElementById('iconPlay');
     const iconPause = document.getElementById('iconPause');
 
-    audio.volume = 0.5;
+    audio.volume = 0.25;
 
     function setPlaying(playing) {
       iconPlay.style.display  = playing ? 'none' : '';
@@ -1232,7 +1232,7 @@
 
     function unlockAudio() {
       audio.muted  = false;
-      audio.volume = 0.5;
+      audio.volume = 0.25;
       audio.play().then(() => setPlaying(true)).catch(() => {});
       removeUnlockListeners();
     }
@@ -1253,7 +1253,7 @@
       e.stopPropagation();
       removeUnlockListeners();       /* no longer needed once user has interacted */
       audio.muted  = false;
-      audio.volume = 0.5;
+      audio.volume = 0.25;
       if (audio.paused) {
         audio.play().then(() => setPlaying(true)).catch(() => {});
       } else {
