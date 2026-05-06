@@ -705,9 +705,76 @@
     @media (min-width: 1024px) {
       .event-card { max-width: 560px; }
     }
+
+    /* ────────────────────────────────────────────
+       Music Toggle Button
+    ──────────────────────────────────────────── */
+    .music-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 10;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(12, 7, 5, 0.72);
+      border: 1px solid rgba(192, 138, 46, 0.45);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.2s, background 0.2s;
+      padding: 0;
+    }
+
+    .music-btn:hover {
+      border-color: var(--gold);
+      background: rgba(12, 7, 5, 0.88);
+    }
+
+    .music-btn svg {
+      width: 18px;
+      height: 18px;
+      fill: var(--gold);
+      transition: opacity 0.2s;
+    }
+
+    /* spinning vinyl ring when playing */
+    .music-btn::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      border: 1px solid transparent;
+      border-top-color: var(--gold);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .music-btn.playing::before {
+      opacity: 0.5;
+      animation: spin 3s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
   </style>
 </head>
 <body>
+
+  <!-- ── Background music ── -->
+  <audio id="bgMusic" src="brand_assests/trimmed.mp3" loop preload="auto"></audio>
+
+  <!-- ── Music toggle ── -->
+  <button class="music-btn" id="musicBtn" aria-label="Toggle background music">
+    <!-- Play icon (shown when paused) -->
+    <svg id="iconPlay" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+    <!-- Pause icon (shown when playing) -->
+    <svg id="iconPause" viewBox="0 0 24 24" aria-hidden="true" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+  </button>
 
   <!-- ── Fixed background ── -->
   <div class="bg-fixed" aria-hidden="true"></div>
@@ -1138,6 +1205,62 @@
 
     /* Initialise modal as hidden */
     modal.style.display = 'none';
+
+    /* ── Background music ── */
+    const audio     = document.getElementById('bgMusic');
+    const musicBtn  = document.getElementById('musicBtn');
+    const iconPlay  = document.getElementById('iconPlay');
+    const iconPause = document.getElementById('iconPause');
+
+    audio.volume = 0.5;
+
+    function setPlaying(playing) {
+      iconPlay.style.display  = playing ? 'none' : '';
+      iconPause.style.display = playing ? ''     : 'none';
+      musicBtn.classList.toggle('playing', playing);
+      musicBtn.setAttribute('aria-label', playing ? 'Pause music' : 'Play music');
+    }
+
+    /* Muted autoplay (browsers allow this), then immediately unmute.
+       Works on Chrome, Firefox, Safari desktop. On strict mobile browsers
+       the catch() registers an unlock handler on the first interaction. */
+    const unlockEvents = ['click', 'touchstart', 'scroll', 'keydown'];
+
+    function removeUnlockListeners() {
+      unlockEvents.forEach(ev => document.removeEventListener(ev, unlockAudio));
+    }
+
+    function unlockAudio() {
+      audio.muted  = false;
+      audio.volume = 0.5;
+      audio.play().then(() => setPlaying(true)).catch(() => {});
+      removeUnlockListeners();
+    }
+
+    audio.muted = true;
+    audio.play().then(() => {
+      audio.muted = false;           /* unmute right away */
+      setPlaying(true);
+    }).catch(() => {
+      /* Autoplay fully blocked — fire on any interaction */
+      unlockEvents.forEach(ev =>
+        document.addEventListener(ev, unlockAudio, { once: true, passive: true })
+      );
+    });
+
+    /* Manual toggle — always ensure unmuted before playing */
+    musicBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      removeUnlockListeners();       /* no longer needed once user has interacted */
+      audio.muted  = false;
+      audio.volume = 0.5;
+      if (audio.paused) {
+        audio.play().then(() => setPlaying(true)).catch(() => {});
+      } else {
+        audio.pause();
+        setPlaying(false);
+      }
+    });
   </script>
 
 </body>
