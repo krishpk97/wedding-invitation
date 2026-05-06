@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shalini &amp; Krishna — Wedding Invitation</title>
+  <meta name="description" content="Join us in celebrating the union of Shalini & Krishna. Wedding Ceremony — May 28, 2026. Receptions in Hosur & Dubai.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Great+Vibes&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ────────────────────────────────────────────
+       Reset & Root
+    ──────────────────────────────────────────── */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --maroon:       #7A1E3E;
+      --forest:       #2F4A2E;
+      --olive:        #6B6F3A;
+      --gold:         #C08A2E;
+      --gold-bright:  #D4A953;
+      --chocolate:    #784A2A;
+      --sand:         #E7D9B6;
+      --ivory:        #F3EAD8;
+      --dark:         #0C0705;
+      --panel:        rgba(10, 5, 3, 0.36);
+      --panel-border: rgba(192, 138, 46, 0.48);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      color: var(--ivory);
+      background: var(--dark);
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* ────────────────────────────────────────────
+       Fixed Background Stack
+    ──────────────────────────────────────────── */
+    .bg-fixed {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background-image: url('brand_assests/bg_image.png');
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
+    }
+
+    /* Warm dark veil — lets illustration breathe but ensures legibility */
+    .bg-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(
+        160deg,
+        rgba(10, 5, 3, 0.74) 0%,
+        rgba(18, 9, 4, 0.68) 45%,
+        rgba(10, 5, 3, 0.76) 100%
+      );
+    }
+
+    /* ────────────────────────────────────────────
+       Page Corner Ornaments (fixed)
+    ──────────────────────────────────────────── */
+    .corner {
+      position: fixed;
+      z-index: 5;
+      width: 52px;
+      height: 52px;
+      opacity: 0.45;
+      pointer-events: none;
+    }
+    .corner svg { width: 100%; height: 100%; }
+    .corner path { stroke: var(--gold); stroke-width: 1; fill: none; }
+
+    .corner--tl { top: 14px; left: 14px; }
+    .corner--tr { top: 14px; right: 14px; transform: scaleX(-1); }
+    .corner--bl { bottom: 14px; left: 14px; transform: scaleY(-1); }
+    .corner--br { bottom: 14px; right: 14px; transform: scale(-1,-1); }
+
+    /* ────────────────────────────────────────────
+       Content Wrapper
+    ──────────────────────────────────────────── */
+    .content {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ────────────────────────────────────────────
+       Shared Ornamental Divider
+    ──────────────────────────────────────────── */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      max-width: 260px;
+      margin: 0 auto;
+    }
+
+    .divider__line {
+      flex: 1;
+      height: 1px;
+    }
+    .divider__line--l { background: linear-gradient(to right, transparent, var(--gold)); }
+    .divider__line--r { background: linear-gradient(to left, transparent, var(--gold)); }
+
+    .divider__gems {
+      color: var(--gold);
+      font-size: 7px;
+      letter-spacing: 5px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* ────────────────────────────────────────────
+       Hero Section
+    ──────────────────────────────────────────── */
+    .hero {
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 28px 100px;
+      position: relative;
+    }
+
+    .hero__eyebrow {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 0.68rem;
+      letter-spacing: 0.42em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 36px;
+    }
+
+    .hero__names {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      line-height: 1;
+      color: var(--ivory);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+
+    .hero__name {
+      font-size: clamp(4rem, 18vw, 9rem);
+      letter-spacing: -0.02em;
+      display: block;
+    }
+
+    .hero__ampersand {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(2.2rem, 9vw, 5rem);
+      color: var(--gold);
+      line-height: 1.2;
+      display: block;
+      margin: -4px 0;
+    }
+
+    .hero__divider {
+      margin: 38px auto 36px;
+    }
+
+    .hero__tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(1.05rem, 3.8vw, 1.35rem);
+      color: var(--sand);
+      max-width: 420px;
+      line-height: 1.8;
+      opacity: 0.87;
+    }
+
+    /* Scroll cue */
+    .scroll-cue {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      color: var(--gold);
+      opacity: 0.55;
+    }
+
+    .scroll-cue__label {
+      font-size: 0.55rem;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      font-family: 'Jost', sans-serif;
+    }
+
+    .scroll-cue__line {
+      width: 1px;
+      height: 52px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: cueFloat 2.2s ease-in-out infinite;
+    }
+
+    @keyframes cueFloat {
+      0%, 100% { opacity: 0.35; transform: scaleY(0.75); }
+      50% { opacity: 1; transform: scaleY(1); }
+    }
+
+    /* ────────────────────────────────────────────
+       Family Section
+    ──────────────────────────────────────────── */
+    .family {
+      padding: 80px 28px 90px;
+      text-align: center;
+    }
+
+    .family__inner {
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 0.62rem;
+      letter-spacing: 0.42em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.8;
+      margin-bottom: 36px;
+      display: block;
+    }
+
+    .family__person-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      font-size: clamp(1.6rem, 6vw, 2.4rem);
+      color: var(--ivory);
+      letter-spacing: 0.02em;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .family__parents {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(0.95rem, 3.2vw, 1.15rem);
+      color: var(--sand);
+      opacity: 0.82;
+      line-height: 1.6;
+    }
+
+    .family__weds {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(2.8rem, 10vw, 4.5rem);
+      color: var(--gold);
+      display: block;
+      margin: 28px 0 24px;
+      line-height: 1;
+    }
+
+    /* ────────────────────────────────────────────
+       Event Cards
+    ──────────────────────────────────────────── */
+    .event-section {
+      padding: 40px 20px 60px;
+    }
+
+    .event-card {
+      background: var(--panel);
+      border: 1px solid var(--panel-border);
+      border-radius: 2px;
+      padding: 48px 32px 44px;
+      max-width: 480px;
+      margin: 0 auto;
+      text-align: center;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 8px 48px rgba(0,0,0,0.55);
+      text-shadow: 0 1px 14px rgba(0,0,0,0.65);
+    }
+
+    .event-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 64px rgba(0,0,0,0.65), 0 0 28px rgba(192,138,46,0.06);
+    }
+
+    /* L-corner accents */
+    .event-card::before,
+    .event-card::after {
+      content: '';
+      position: absolute;
+      width: 28px;
+      height: 28px;
+    }
+    .event-card::before {
+      top: -1px; left: -1px;
+      border-top: 1px solid var(--gold);
+      border-left: 1px solid var(--gold);
+      opacity: 0.6;
+    }
+    .event-card::after {
+      bottom: -1px; right: -1px;
+      border-bottom: 1px solid var(--gold);
+      border-right: 1px solid var(--gold);
+      opacity: 0.6;
+    }
+
+    /* Inner corner complement via inner wrapper */
+    .event-card__corners {
+      position: absolute;
+      inset: -1px;
+      pointer-events: none;
+    }
+    .event-card__corners::before,
+    .event-card__corners::after {
+      content: '';
+      position: absolute;
+      width: 28px;
+      height: 28px;
+    }
+    .event-card__corners::before {
+      top: -1px; right: -1px;
+      border-top: 1px solid var(--gold);
+      border-right: 1px solid var(--gold);
+      opacity: 0.6;
+    }
+    .event-card__corners::after {
+      bottom: -1px; left: -1px;
+      border-bottom: 1px solid var(--gold);
+      border-left: 1px solid var(--gold);
+      opacity: 0.6;
+    }
+
+    .event-card__label {
+      font-family: 'Jost', sans-serif;
+      font-weight: 400;
+      font-size: 0.67rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--gold-bright);
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .event-card__title {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(2.2rem, 7.5vw, 3.2rem);
+      color: var(--ivory);
+      line-height: 1.05;
+      margin-bottom: 6px;
+    }
+
+    .event-card__subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: normal;
+      font-weight: 300;
+      font-size: clamp(1.55rem, 6vw, 2.1rem);
+      color: var(--ivory);
+      letter-spacing: 0.18em;
+      margin-bottom: 28px;
+      text-indent: 0.18em; /* optical balance for letter-spacing */
+    }
+
+    .event-card__divider {
+      margin: 0 auto 28px;
+    }
+
+    .event-detail {
+      margin-bottom: 20px;
+    }
+
+    .event-detail__label {
+      font-family: 'Jost', sans-serif;
+      font-weight: 400;
+      font-size: 0.65rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--gold-bright);
+      opacity: 0.85;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .event-detail__value {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: clamp(1.15rem, 4vw, 1.35rem);
+      color: var(--ivory);
+      line-height: 1.6;
+      display: block;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 36px;
+      align-items: center;
+    }
+
+    @media (min-width: 400px) {
+      .cta-row {
+        flex-direction: row;
+        justify-content: center;
+      }
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 11px 22px;
+      font-family: 'Jost', sans-serif;
+      font-weight: 400;
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      border-radius: 1px;
+      cursor: pointer;
+      transition: all 0.22s ease;
+      white-space: nowrap;
+      min-width: 150px;
+    }
+
+    .btn--gold {
+      background: var(--gold);
+      color: var(--dark);
+    }
+    .btn--gold:hover {
+      background: var(--gold-bright);
+    }
+
+    .btn--outline {
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid rgba(192,138,46,0.45);
+    }
+    .btn--outline:hover {
+      background: rgba(192,138,46,0.1);
+      border-color: var(--gold);
+    }
+
+    /* ────────────────────────────────────────────
+       Footer
+    ──────────────────────────────────────────── */
+    .footer {
+      padding: 64px 28px 88px;
+      text-align: center;
+    }
+
+    .footer__divider {
+      max-width: 320px;
+      margin: 0 auto 40px;
+    }
+
+    .footer__text {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(1.5rem, 5.5vw, 2.2rem);
+      color: var(--ivory);
+      letter-spacing: 0.01em;
+    }
+
+    /* ────────────────────────────────────────────
+       Fade-up Animation
+    ──────────────────────────────────────────── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.72s cubic-bezier(0.25,0.46,0.45,0.94),
+                  transform 0.72s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .fade-up.d1 { transition-delay: 0.08s; }
+    .fade-up.d2 { transition-delay: 0.16s; }
+    .fade-up.d3 { transition-delay: 0.24s; }
+    .fade-up.d4 { transition-delay: 0.32s; }
+
+    /* ────────────────────────────────────────────
+       Directional Reveal Variants
+    ──────────────────────────────────────────── */
+    .fade-left {
+      opacity: 0;
+      transform: translateX(-30px);
+      transition: opacity 0.7s cubic-bezier(0.25,0.46,0.45,0.94),
+                  transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+    .fade-left.visible { opacity: 1; transform: translateX(0); }
+
+    .fade-right {
+      opacity: 0;
+      transform: translateX(30px);
+      transition: opacity 0.7s cubic-bezier(0.25,0.46,0.45,0.94),
+                  transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+    .fade-right.visible { opacity: 1; transform: translateX(0); }
+
+    .fade-pop {
+      opacity: 0;
+      transform: scale(0.78);
+      transition: opacity 0.5s ease,
+                  transform 0.55s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .fade-pop.visible { opacity: 1; transform: scale(1); }
+
+    /* ────────────────────────────────────────────
+       Animation Keyframes
+    ──────────────────────────────────────────── */
+    @keyframes revealUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes nameReveal {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+        letter-spacing: 0.06em;
+        filter: blur(4px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+        letter-spacing: -0.02em;
+        filter: blur(0);
+      }
+    }
+
+    @keyframes ampReveal {
+      from { opacity: 0; transform: scale(0.7) translateY(12px); }
+      to   { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    @keyframes drawLine {
+      from { transform: scaleX(0); }
+      to   { transform: scaleX(1); }
+    }
+
+    /* ────────────────────────────────────────────
+       Hero Name Animations
+    ──────────────────────────────────────────── */
+    .hero__name.visible {
+      animation: nameReveal 0.95s cubic-bezier(0.16,1,0.3,1) both;
+    }
+    .hero__ampersand.visible {
+      animation: ampReveal 0.75s cubic-bezier(0.34,1.56,0.64,1) both;
+    }
+
+    /* ────────────────────────────────────────────
+       Event Card — Children Cascade
+    ──────────────────────────────────────────── */
+    .event-card.visible .event-card__label {
+      animation: revealUp 0.45s cubic-bezier(0.25,0.46,0.45,0.94) 0.14s both;
+    }
+    .event-card.visible .event-card__title {
+      animation: revealUp 0.55s cubic-bezier(0.25,0.46,0.45,0.94) 0.24s both;
+    }
+    .event-card.visible .event-card__subtitle {
+      animation: revealUp 0.45s cubic-bezier(0.25,0.46,0.45,0.94) 0.32s both;
+    }
+    .event-card.visible .event-card__divider {
+      animation: revealUp 0.4s ease 0.38s both;
+    }
+    .event-card.visible .event-card__divider .divider__line--l {
+      animation: drawLine 0.65s cubic-bezier(0.25,0.46,0.45,0.94) 0.46s both;
+      transform-origin: right center;
+    }
+    .event-card.visible .event-card__divider .divider__line--r {
+      animation: drawLine 0.65s cubic-bezier(0.25,0.46,0.45,0.94) 0.46s both;
+      transform-origin: left center;
+    }
+    /* .event-detail delays injected per-element by JS */
+    .detail-reveal {
+      animation: revealUp 0.42s ease both;
+    }
+    .event-card.visible .cta-row {
+      animation: revealUp 0.45s ease 0.78s both;
+    }
+
+    /* ────────────────────────────────────────────
+       Calendar Modal
+    ──────────────────────────────────────────── */
+    .cal-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(10,5,3,0.88);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      opacity: 0;
+      transition: opacity 0.22s ease;
+    }
+
+    .cal-modal.open { opacity: 1; }
+
+    .cal-modal__box {
+      background: rgba(18,10,6,0.98);
+      border: 1px solid var(--panel-border);
+      padding: 40px 32px;
+      max-width: 320px;
+      width: 100%;
+      text-align: center;
+      position: relative;
+      transform: translateY(16px);
+      transition: transform 0.25s ease;
+    }
+
+    .cal-modal.open .cal-modal__box { transform: translateY(0); }
+
+    .cal-modal__label {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 14px;
+    }
+
+    .cal-modal__event-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: 1.4rem;
+      color: var(--ivory);
+      display: block;
+      margin-bottom: 28px;
+      line-height: 1.3;
+    }
+
+    .cal-modal__options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .cal-modal__close {
+      display: block;
+      margin-top: 20px;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--sand);
+      opacity: 0.45;
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      width: 100%;
+      padding: 6px;
+    }
+
+    .cal-modal__close:hover { opacity: 0.85; }
+
+    /* ────────────────────────────────────────────
+       Responsive — desktop
+    ──────────────────────────────────────────── */
+    @media (min-width: 768px) {
+      .hero { padding: 100px 48px 120px; }
+
+      .family { padding: 100px 48px 110px; }
+
+      .event-section { padding: 50px 48px 70px; }
+      .event-card { padding: 60px 56px 52px; }
+
+      .footer { padding: 80px 48px 100px; }
+    }
+
+    @media (min-width: 1024px) {
+      .event-card { max-width: 560px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Fixed background ── -->
+  <div class="bg-fixed" aria-hidden="true"></div>
+  <div class="bg-overlay" aria-hidden="true"></div>
+
+  <!-- ── Page corner ornaments ── -->
+  <div class="corner corner--tl" aria-hidden="true">
+    <svg viewBox="0 0 52 52">
+      <path d="M2,50 L2,2 L50,2"/>
+      <path d="M2,22 L2,12 M12,2 L22,2"/>
+      <path d="M6,6 L10,2 M2,10 L6,6"/>
+    </svg>
+  </div>
+  <div class="corner corner--tr" aria-hidden="true">
+    <svg viewBox="0 0 52 52">
+      <path d="M2,50 L2,2 L50,2"/>
+      <path d="M2,22 L2,12 M12,2 L22,2"/>
+      <path d="M6,6 L10,2 M2,10 L6,6"/>
+    </svg>
+  </div>
+  <div class="corner corner--bl" aria-hidden="true">
+    <svg viewBox="0 0 52 52">
+      <path d="M2,50 L2,2 L50,2"/>
+      <path d="M2,22 L2,12 M12,2 L22,2"/>
+      <path d="M6,6 L10,2 M2,10 L6,6"/>
+    </svg>
+  </div>
+  <div class="corner corner--br" aria-hidden="true">
+    <svg viewBox="0 0 52 52">
+      <path d="M2,50 L2,2 L50,2"/>
+      <path d="M2,22 L2,12 M12,2 L22,2"/>
+      <path d="M6,6 L10,2 M2,10 L6,6"/>
+    </svg>
+  </div>
+
+  <!-- ── Main content ── -->
+  <div class="content">
+
+    <!-- ── 1. Hero ── -->
+    <section class="hero" aria-label="Wedding invitation hero">
+
+      <p class="hero__eyebrow fade-up">Save the Date</p>
+
+      <div class="hero__names" aria-label="Shalini and Krishna">
+        <span class="hero__name fade-up">Shalini</span>
+        <span class="hero__ampersand fade-up" aria-hidden="true">and</span>
+        <span class="hero__name fade-up">Krishna</span>
+      </div>
+
+      <div class="divider hero__divider fade-up d2" aria-hidden="true">
+        <span class="divider__line divider__line--l"></span>
+        <span class="divider__gems">◆ ✦ ◆</span>
+        <span class="divider__line divider__line--r"></span>
+      </div>
+
+      <p class="hero__tagline fade-up d3">
+        "With joyful hearts and the blessings of our families,<br>
+        we invite you to celebrate our union"
+      </p>
+
+      <div class="scroll-cue" aria-hidden="true">
+        <div class="scroll-cue__line"></div>
+        <span class="scroll-cue__label">Scroll</span>
+      </div>
+
+    </section>
+
+    <!-- ── 2. Family Introduction ── -->
+    <section class="family" aria-label="Family introduction">
+      <div class="family__inner">
+
+        <span class="section-label fade-up">Two Families, One Union</span>
+
+        <div class="divider fade-up" style="margin-bottom: 44px;" aria-hidden="true">
+          <span class="divider__line divider__line--l"></span>
+          <span class="divider__gems">✦</span>
+          <span class="divider__line divider__line--r"></span>
+        </div>
+
+        <div class="fade-left">
+          <span class="family__person-name">Shalini</span>
+          <p class="family__parents">
+            D/O Mr. Murugesan Srinivasan &amp;<br>
+            Mrs. Bhuvaneswari Murugesan
+          </p>
+        </div>
+
+        <span class="family__weds fade-pop" aria-label="weds">weds</span>
+
+        <div class="fade-right">
+          <span class="family__person-name">Krishna</span>
+          <p class="family__parents">
+            S/O Mr. Pandiyan Jayavel &amp;<br>
+            Mrs. Elavarasi Pachiyappan
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── 3. Wedding Ceremony ── -->
+    <section class="event-section" aria-label="Wedding ceremony details">
+      <div class="event-card fade-up">
+        <div class="event-card__corners" aria-hidden="true"></div>
+
+        <span class="event-card__label">The Ceremony</span>
+        <h2 class="event-card__title">Wedding Ceremony</h2>
+        <p class="event-card__subtitle">Trichy</p>
+
+        <div class="divider event-card__divider" aria-hidden="true">
+          <span class="divider__line divider__line--l"></span>
+          <span class="divider__gems">◆ ✦ ◆</span>
+          <span class="divider__line divider__line--r"></span>
+        </div>
+
+        <div class="event-detail">
+          <span class="event-detail__label">Date</span>
+          <span class="event-detail__value">May 28–29, 2026</span>
+        </div>
+
+        <div class="event-detail">
+          <span class="event-detail__label">Time</span>
+          <span class="event-detail__value">9:01 AM – 10:20 AM</span>
+        </div>
+
+        <div class="event-detail">
+          <span class="event-detail__label">Venue</span>
+          <span class="event-detail__value">
+            Sowbaghya Mahal<br>
+            Ramyas Hotels, Trichy<br>
+            Tamil Nadu
+          </span>
+        </div>
+
+        <div class="cta-row">
+          <a class="btn btn--gold"
+             href="https://maps.google.com/?q=Sowbaghya+Mahal+Ramyas+Hotels+Trichy+Tamil+Nadu"
+             target="_blank" rel="noopener noreferrer"
+             aria-label="Get directions to Sowbaghya Mahal">
+            ↗ Get Directions
+          </a>
+          <button class="btn btn--outline" onclick="openCalModal('ceremony')"
+                  aria-label="Add wedding ceremony to calendar">
+            + Add to Calendar
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 4. Reception — Hosur ── -->
+    <section class="event-section" aria-label="Hosur reception details">
+      <div class="event-card fade-up">
+        <div class="event-card__corners" aria-hidden="true"></div>
+
+        <span class="event-card__label">Celebration</span>
+        <h2 class="event-card__title">Reception</h2>
+        <p class="event-card__subtitle">Hosur</p>
+
+        <div class="divider event-card__divider" aria-hidden="true">
+          <span class="divider__line divider__line--l"></span>
+          <span class="divider__gems">◆ ✦ ◆</span>
+          <span class="divider__line divider__line--r"></span>
+        </div>
+
+        <div class="event-detail">
+          <span class="event-detail__label">Date</span>
+          <span class="event-detail__value">June 5, 2026</span>
+        </div>
+
+        <div class="event-detail">
+          <span class="event-detail__label">Time</span>
+          <span class="event-detail__value">7:00 PM Onwards</span>
+        </div>
+
+        <div class="event-detail">
+          <span class="event-detail__label">Venue</span>
+          <span class="event-detail__value">
+            Fortune Hosur<br>
+            Member ITC Hotel's Group
+          </span>
+        </div>
+
+        <div class="cta-row">
+          <a class="btn btn--gold"
+             href="https://maps.google.com/?q=Fortune+Hosur+ITC+Hotels+Group+Hosur+Tamil+Nadu"
+             target="_blank" rel="noopener noreferrer"
+             aria-label="Get directions to Fortune Hosur">
+            ↗ Get Directions
+          </a>
+          <button class="btn btn--outline" onclick="openCalModal('hosur')"
+                  aria-label="Add Hosur reception to calendar">
+            + Add to Calendar
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 5. Reception — Dubai ── -->
+    <section class="event-section" aria-label="Dubai reception details">
+      <div class="event-card fade-up">
+        <div class="event-card__corners" aria-hidden="true"></div>
+
+        <span class="event-card__label">Celebration</span>
+        <h2 class="event-card__title">Reception</h2>
+        <p class="event-card__subtitle">Dubai</p>
+
+        <div class="divider event-card__divider" aria-hidden="true">
+          <span class="divider__line divider__line--l"></span>
+          <span class="divider__gems">◆ ✦ ◆</span>
+          <span class="divider__line divider__line--r"></span>
+        </div>
+
+        <div class="event-detail">
+          <span class="event-detail__label">Date</span>
+          <span class="event-detail__value">June 20, 2026</span>
+        </div>
+
+        <div class="event-detail">
+          <span class="event-detail__label">Time</span>
+          <span class="event-detail__value">6:00 PM Onwards</span>
+        </div>
+
+        <div class="event-detail">
+          <span class="event-detail__label">Venue</span>
+          <span class="event-detail__value">
+            S Hotel<br>
+            Al Barsha, Dubai
+          </span>
+        </div>
+
+        <div class="cta-row">
+          <a class="btn btn--gold"
+             href="https://maps.google.com/?q=S+Hotel+Al+Barsha+Dubai"
+             target="_blank" rel="noopener noreferrer"
+             aria-label="Get directions to S Hotel Dubai">
+            ↗ Get Directions
+          </a>
+          <button class="btn btn--outline" onclick="openCalModal('dubai')"
+                  aria-label="Add Dubai reception to calendar">
+            + Add to Calendar
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 6. Footer ── -->
+    <footer class="footer fade-up" aria-label="Closing">
+      <div class="divider footer__divider" aria-hidden="true">
+        <span class="divider__line divider__line--l" style="background: linear-gradient(to right, transparent, var(--gold));"></span>
+        <span class="divider__gems">✦ ◆ ✦</span>
+        <span class="divider__line divider__line--r" style="background: linear-gradient(to left, transparent, var(--gold));"></span>
+      </div>
+      <p class="footer__text">With love, Shalini &amp; Krishna</p>
+    </footer>
+
+  </div><!-- /.content -->
+
+  <!-- ── Calendar Modal ── -->
+  <div class="cal-modal" id="calModal" role="dialog" aria-modal="true" aria-labelledby="calModalTitle">
+    <div class="cal-modal__box">
+      <span class="cal-modal__label">Add to Calendar</span>
+      <span class="cal-modal__event-name" id="calModalTitle"></span>
+      <div class="cal-modal__options" id="calModalOptions"></div>
+      <button class="cal-modal__close" id="calModalClose" aria-label="Close calendar modal">Close</button>
+    </div>
+  </div>
+
+  <script>
+    /* ── IntersectionObserver ── */
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('visible');
+        /* Stagger .event-detail children inside revealed cards */
+        if (e.target.classList.contains('event-card')) {
+          e.target.querySelectorAll('.event-detail').forEach((det, i) => {
+            det.style.animationDelay = `${0.48 + i * 0.12}s`;
+            det.classList.add('detail-reveal');
+          });
+        }
+        io.unobserve(e.target);
+      });
+    }, { threshold: 0.12 });
+
+    /* Observe everything except hero elements (hero is JS-staggered below) */
+    document.querySelectorAll('.fade-up, .fade-left, .fade-right, .fade-pop').forEach(el => {
+      if (!el.closest('.hero')) io.observe(el);
+    });
+
+    /* Hero: staggered setTimeout so each element enters sequentially */
+    window.addEventListener('load', () => {
+      document.querySelectorAll('.hero .fade-up').forEach((el, i) => {
+        setTimeout(() => el.classList.add('visible'), i * 130 + 120);
+      });
+    });
+
+    /* ── Calendar event data ── */
+    const calEvents = {
+      ceremony: {
+        displayName: 'Wedding Ceremony',
+        title:       'Shalini & Krishna — Wedding Ceremony',
+        dtstart:     '20260528T090100',
+        dtend:       '20260528T102000',
+        location:    'Sowbaghya Mahal, Ramyas Hotels, Trichy, Tamil Nadu',
+        description: 'Wedding Ceremony of Shalini & Krishna. Join us as we celebrate this sacred union.',
+        tz:          'Asia/Kolkata',
+        filename:    'shalini-krishna-wedding-ceremony.ics',
+      },
+      hosur: {
+        displayName: 'Reception — Hosur',
+        title:       'Shalini & Krishna — Reception (Hosur)',
+        dtstart:     '20260605T190000',
+        dtend:       '20260605T230000',
+        location:    "Fortune Hosur, Member ITC Hotel's Group, Hosur, Tamil Nadu",
+        description: 'Reception — Hosur. Join us in celebrating Shalini & Krishna.',
+        tz:          'Asia/Kolkata',
+        filename:    'shalini-krishna-reception-hosur.ics',
+      },
+      dubai: {
+        displayName: 'Reception — Dubai',
+        title:       'Shalini & Krishna — Reception (Dubai)',
+        dtstart:     '20260620T180000',
+        dtend:       '20260620T230000',
+        location:    'S Hotel, Al Barsha, Dubai',
+        description: 'Reception — Dubai. Join us in celebrating Shalini & Krishna.',
+        tz:          'Asia/Dubai',
+        filename:    'shalini-krishna-reception-dubai.ics',
+      },
+    };
+
+    /* Build Google Calendar URL */
+    function gcalUrl(ev) {
+      const p = new URLSearchParams({
+        action:  'TEMPLATE',
+        text:    ev.title,
+        dates:   `${ev.dtstart}/${ev.dtend}`,
+        location: ev.location,
+        details: ev.description,
+        ctz:     ev.tz,
+      });
+      return `https://calendar.google.com/calendar/render?${p}`;
+    }
+
+    /* Build ICS content */
+    function buildICS(ev) {
+      const stamp = new Date().toISOString().replace(/[-:.]/g,'').slice(0,15) + 'Z';
+      const uid   = `${ev.dtstart}-${Math.random().toString(36).slice(2,10)}@shalini-krishna.wedding`;
+      const esc   = s => s.replace(/,/g,'\\,').replace(/;/g,'\\;').replace(/\n/g,'\\n');
+
+      const lines = [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'PRODID:-//Shalini & Krishna Wedding//EN',
+        'CALSCALE:GREGORIAN',
+        'METHOD:PUBLISH',
+        'BEGIN:VEVENT',
+      ];
+
+      if (ev.allDay) {
+        lines.push(`DTSTART;VALUE=DATE:${ev.dtstart}`);
+        lines.push(`DTEND;VALUE=DATE:${ev.dtend}`);
+      } else {
+        lines.push(`DTSTART;TZID=${ev.tz}:${ev.dtstart}`);
+        lines.push(`DTEND;TZID=${ev.tz}:${ev.dtend}`);
+      }
+
+      lines.push(
+        `SUMMARY:${esc(ev.title)}`,
+        `LOCATION:${esc(ev.location)}`,
+        `DESCRIPTION:${esc(ev.description)}`,
+        `DTSTAMP:${stamp}`,
+        `UID:${uid}`,
+        'END:VEVENT',
+        'END:VCALENDAR'
+      );
+
+      return lines.join('\r\n');
+    }
+
+    /* Download ICS */
+    function downloadICS(key) {
+      const ev   = calEvents[key];
+      const blob = new Blob([buildICS(ev)], { type: 'text/calendar;charset=utf-8' });
+      const url  = URL.createObjectURL(blob);
+      const a    = Object.assign(document.createElement('a'), { href: url, download: ev.filename });
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    /* ── Modal ── */
+    const modal     = document.getElementById('calModal');
+    const modalTitle = document.getElementById('calModalTitle');
+    const modalOpts  = document.getElementById('calModalOptions');
+    const modalClose = document.getElementById('calModalClose');
+
+    function openCalModal(key) {
+      const ev = calEvents[key];
+      modalTitle.textContent = ev.displayName;
+
+      modalOpts.innerHTML = `
+        <a class="btn btn--gold" href="${gcalUrl(ev)}" target="_blank" rel="noopener noreferrer"
+           style="text-decoration:none; display:flex; justify-content:center;">
+          Open in Google Calendar
+        </a>
+        <button class="btn btn--outline" onclick="downloadICS('${key}')" style="width:100%;">
+          Download .ics File
+        </button>
+      `;
+
+      modal.style.display = 'flex';
+      requestAnimationFrame(() => modal.classList.add('open'));
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeCalModal() {
+      modal.classList.remove('open');
+      modal.addEventListener('transitionend', () => {
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+      }, { once: true });
+    }
+
+    modalClose.addEventListener('click', closeCalModal);
+    modal.addEventListener('click', e => { if (e.target === modal) closeCalModal(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeCalModal(); });
+
+    /* Initialise modal as hidden */
+    modal.style.display = 'none';
+  </script>
+
+</body>
+</html>
