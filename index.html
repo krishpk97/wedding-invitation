@@ -479,6 +479,19 @@
       box-shadow: 0 6px 20px rgba(192,138,46,0.2);
     }
 
+    .btn--live {
+      background: transparent;
+      color: var(--sand);
+      border: 1px solid rgba(231,217,182,0.25);
+      letter-spacing: 0.14em;
+    }
+    .btn--live:hover {
+      background: rgba(231,217,182,0.07);
+      border-color: rgba(231,217,182,0.5);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+    }
+
     /* ────────────────────────────────────────────
        Footer
     ──────────────────────────────────────────── */
@@ -974,6 +987,13 @@
             + Add to Calendar
           </button>
         </div>
+
+        <div class="cta-row" style="margin-top: 12px;">
+          <button class="btn btn--live" onclick="openLiveModal()"
+                  aria-label="Watch live stream">
+            ▶ Watch Live
+          </button>
+        </div>
       </div>
     </section>
 
@@ -1084,6 +1104,35 @@
     </footer>
 
   </div><!-- /.content -->
+
+  <!-- ── Watch Live Modal ── -->
+  <div class="cal-modal" id="liveModal" role="dialog" aria-modal="true" aria-labelledby="liveModalTitle">
+    <div class="cal-modal__box">
+      <span class="cal-modal__label">Live Stream</span>
+      <span class="cal-modal__event-name" id="liveModalTitle">Watch the Ceremony</span>
+      <div style="margin-bottom: 24px;">
+        <div class="divider" style="margin-bottom: 20px;" aria-hidden="true">
+          <span class="divider__line divider__line--l"></span>
+          <span class="divider__gems">✦</span>
+          <span class="divider__line divider__line--r"></span>
+        </div>
+        <p style="
+          font-family: 'Cormorant Garamond', serif;
+          font-style: italic;
+          font-weight: 300;
+          font-size: 1.1rem;
+          color: var(--sand);
+          line-height: 1.8;
+          text-align: center;
+        ">
+          The live stream will be available on the morning of the ceremony.<br>
+          Please return on <span style="color: var(--ivory); font-style: normal;">29 May 2026</span>
+          to watch and be a part of this moment with us.
+        </p>
+      </div>
+      <button class="btn btn--outline" onclick="closeLiveModal()" style="width:100%;">Close</button>
+    </div>
+  </div>
 
   <!-- ── Calendar Modal ── -->
   <div class="cal-modal" id="calModal" role="dialog" aria-modal="true" aria-labelledby="calModalTitle">
@@ -1258,6 +1307,27 @@
 
     /* Initialise modal as hidden */
     modal.style.display = 'none';
+
+    /* ── Watch Live Modal ── */
+    const liveModal = document.getElementById('liveModal');
+
+    function openLiveModal() {
+      liveModal.style.display = 'flex';
+      requestAnimationFrame(() => liveModal.classList.add('open'));
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLiveModal() {
+      liveModal.classList.remove('open');
+      liveModal.addEventListener('transitionend', () => {
+        liveModal.style.display = 'none';
+        document.body.style.overflow = '';
+      }, { once: true });
+    }
+
+    liveModal.addEventListener('click', e => { if (e.target === liveModal) closeLiveModal(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLiveModal(); });
+    liveModal.style.display = 'none';
 
     /* ── Background music ── */
     const audio     = document.getElementById('bgMusic');
