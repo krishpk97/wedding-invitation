@@ -142,7 +142,7 @@
     .hero__eyebrow {
       font-family: 'Jost', sans-serif;
       font-weight: 300;
-      font-size: 0.68rem;
+      font-size: 0.78rem;
       letter-spacing: 0.42em;
       text-transform: uppercase;
       color: var(--gold);
@@ -240,11 +240,11 @@
     .section-label {
       font-family: 'Jost', sans-serif;
       font-weight: 300;
-      font-size: 0.62rem;
-      letter-spacing: 0.42em;
+      font-size: 0.73rem;
+      letter-spacing: 0.38em;
       text-transform: uppercase;
       color: var(--gold);
-      opacity: 0.8;
+      opacity: 0.9;
       margin-bottom: 36px;
       display: block;
     }
@@ -263,9 +263,9 @@
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
       font-weight: 300;
-      font-size: clamp(0.95rem, 3.2vw, 1.15rem);
+      font-size: clamp(1.05rem, 3.5vw, 1.2rem);
       color: var(--sand);
-      opacity: 0.82;
+      opacity: 0.9;
       line-height: 1.6;
     }
 
@@ -356,8 +356,8 @@
     .event-card__label {
       font-family: 'Jost', sans-serif;
       font-weight: 400;
-      font-size: 0.67rem;
-      letter-spacing: 0.4em;
+      font-size: 0.76rem;
+      letter-spacing: 0.36em;
       text-transform: uppercase;
       color: var(--gold-bright);
       margin-bottom: 16px;
@@ -396,11 +396,11 @@
     .event-detail__label {
       font-family: 'Jost', sans-serif;
       font-weight: 400;
-      font-size: 0.65rem;
-      letter-spacing: 0.32em;
+      font-size: 0.73rem;
+      letter-spacing: 0.28em;
       text-transform: uppercase;
       color: var(--gold-bright);
-      opacity: 0.85;
+      opacity: 0.9;
       display: block;
       margin-bottom: 5px;
     }
@@ -434,11 +434,11 @@
       align-items: center;
       justify-content: center;
       gap: 7px;
-      padding: 11px 22px;
+      padding: 12px 24px;
       font-family: 'Jost', sans-serif;
       font-weight: 400;
-      font-size: 0.65rem;
-      letter-spacing: 0.22em;
+      font-size: 0.73rem;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
       text-decoration: none;
       border: none;
@@ -608,6 +608,55 @@
     }
     .event-card.visible .cta-row {
       animation: revealUp 0.45s ease 0.78s both;
+    }
+
+    /* ────────────────────────────────────────────
+       Sub-event blocks (Sangeet / Wedding within Trichy card)
+    ──────────────────────────────────────────── */
+    .event-block {
+      padding: 16px 0;
+      text-align: center;
+    }
+
+    .event-block__name {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(1.25rem, 4.5vw, 1.55rem);
+      color: var(--ivory);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .event-block__time {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: clamp(0.82rem, 2.8vw, 0.92rem);
+      color: var(--sand);
+      letter-spacing: 0.08em;
+      display: block;
+    }
+
+    .event-block-sep {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      max-width: 160px;
+      margin: 0 auto;
+    }
+
+    .event-block-sep::before,
+    .event-block-sep::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(192, 138, 46, 0.3);
+    }
+
+    .event-block-sep__gem {
+      color: var(--gold);
+      font-size: 6px;
+      opacity: 0.7;
     }
 
     /* ────────────────────────────────────────────
@@ -880,7 +929,7 @@
       <div class="event-card fade-up">
         <div class="event-card__corners" aria-hidden="true"></div>
 
-        <span class="event-card__label">The Ceremony</span>
+        <span class="event-card__label">The Celebrations</span>
         <h2 class="event-card__title">Wedding Ceremony</h2>
         <p class="event-card__subtitle">Trichy</p>
 
@@ -890,17 +939,21 @@
           <span class="divider__line divider__line--r"></span>
         </div>
 
-        <div class="event-detail">
-          <span class="event-detail__label">Date</span>
-          <span class="event-detail__value">May 28–29, 2026</span>
+        <div class="event-block">
+          <span class="event-block__name">Sangeet &amp; Reception</span>
+          <span class="event-block__time">28 May 2026 &nbsp;·&nbsp; 6:00 PM – 9:00 PM</span>
         </div>
 
-        <div class="event-detail">
-          <span class="event-detail__label">Time</span>
-          <span class="event-detail__value">9:01 AM – 10:20 AM</span>
+        <div class="event-block-sep" aria-hidden="true">
+          <span class="event-block-sep__gem">◆</span>
         </div>
 
-        <div class="event-detail">
+        <div class="event-block">
+          <span class="event-block__name">Wedding</span>
+          <span class="event-block__time">29 May 2026 &nbsp;·&nbsp; 9:01 AM – 10:20 AM</span>
+        </div>
+
+        <div class="event-detail" style="margin-top: 24px;">
           <span class="event-detail__label">Venue</span>
           <span class="event-detail__value">
             Sowbaghya Mahal<br>
@@ -1076,10 +1129,10 @@
       ceremony: {
         displayName: 'Wedding Ceremony',
         title:       'Shalini & Krishna — Wedding Ceremony',
-        dtstart:     '20260528T090100',
-        dtend:       '20260528T102000',
+        dtstart:     '20260529T090100',
+        dtend:       '20260529T102000',
         location:    'Sowbaghya Mahal, Ramyas Hotels, Trichy, Tamil Nadu',
-        description: 'Wedding Ceremony of Shalini & Krishna. Join us as we celebrate this sacred union.',
+        description: 'Wedding Ceremony of Shalini & Krishna.\n\nSangeet & Reception: 28 May, 6:00 PM – 9:00 PM\nWedding: 29 May, 9:01 AM – 10:20 AM',
         tz:          'Asia/Kolkata',
         filename:    'shalini-krishna-wedding-ceremony.ics',
       },
