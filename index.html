@@ -401,18 +401,19 @@
       flex-direction: column;
       gap: 10px;
       margin-top: 36px;
-      align-items: center;
+      align-items: stretch;
+    }
+
+    .cta-row .btn {
+      flex: 1;
+      width: 100%;
     }
 
     @media (min-width: 400px) {
       .cta-row {
         flex-direction: row;
-        justify-content: center;
+        align-items: center;
       }
-    }
-
-    .cta-row .btn {
-      flex: 1;
     }
 
     .btn {
