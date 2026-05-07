@@ -894,12 +894,56 @@
     @keyframes spin {
       to { transform: rotate(360deg); }
     }
+
+    /* ── Music tooltip ── */
+    .music-tooltip {
+      position: fixed;
+      bottom: 30px;
+      right: 78px;
+      z-index: 10;
+      background: rgba(12, 7, 5, 0.88);
+      border: 1px solid rgba(192, 138, 46, 0.4);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      color: var(--sand);
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 9px 14px;
+      border-radius: 8px;
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      transform: translateX(6px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .music-tooltip.show {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* Arrow pointing right toward the button */
+    .music-tooltip::after {
+      content: '';
+      position: absolute;
+      right: -5px;
+      top: 50%;
+      transform: translateY(-50%);
+      border: 5px solid transparent;
+      border-left-color: rgba(192, 138, 46, 0.4);
+    }
   </style>
 </head>
 <body>
 
   <!-- ── Background music ── -->
   <audio id="bgMusic" src="brand_assests/trimmed.mp3" loop preload="auto"></audio>
+
+  <!-- ── Music tooltip ── -->
+  <div class="music-tooltip" id="musicTooltip">Play / Pause Music</div>
 
   <!-- ── Music toggle ── -->
   <button class="music-btn" id="musicBtn" aria-label="Toggle background music">
@@ -1428,6 +1472,13 @@
         setPlaying(false);
       }
     });
+
+    /* ── Music button tooltip — appears at 4s, disappears after 3s ── */
+    const musicTooltip = document.getElementById('musicTooltip');
+    setTimeout(() => {
+      musicTooltip.classList.add('show');
+      setTimeout(() => musicTooltip.classList.remove('show'), 3000);
+    }, 4000);
   </script>
 
 </body>
