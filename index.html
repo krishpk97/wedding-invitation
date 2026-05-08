@@ -1473,6 +1473,14 @@
       }
     });
 
+    /* ── Pause music when user leaves the tab/browser ── */
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        audio.pause();
+        setPlaying(false);
+      }
+    });
+
     /* ── Music button tooltip — appears at 4s, disappears after 3s ── */
     const musicTooltip = document.getElementById('musicTooltip');
     setTimeout(() => {
