@@ -1232,6 +1232,32 @@
           The live stream will go live when the celebrations begin.<br>
           Please return on the day of the event to join us from wherever you are.
         </p>
+
+        <!-- Countdown -->
+        <div id="liveCountdown" style="display:flex; justify-content:center; gap:12px; margin-top:24px;">
+          <div style="text-align:center;">
+            <div id="cd-days" style="font-family:'Cormorant Garamond',serif; font-size:2.4rem; font-weight:500; color:var(--gold-bright); line-height:1;">00</div>
+            <div style="font-family:'Jost',sans-serif; font-size:0.6rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--sand); margin-top:4px;">Days</div>
+          </div>
+          <div style="font-family:'Cormorant Garamond',serif; font-size:2.4rem; font-weight:300; color:var(--gold); line-height:1; padding-top:2px;">:</div>
+          <div style="text-align:center;">
+            <div id="cd-hours" style="font-family:'Cormorant Garamond',serif; font-size:2.4rem; font-weight:500; color:var(--gold-bright); line-height:1;">00</div>
+            <div style="font-family:'Jost',sans-serif; font-size:0.6rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--sand); margin-top:4px;">Hours</div>
+          </div>
+          <div style="font-family:'Cormorant Garamond',serif; font-size:2.4rem; font-weight:300; color:var(--gold); line-height:1; padding-top:2px;">:</div>
+          <div style="text-align:center;">
+            <div id="cd-mins" style="font-family:'Cormorant Garamond',serif; font-size:2.4rem; font-weight:500; color:var(--gold-bright); line-height:1;">00</div>
+            <div style="font-family:'Jost',sans-serif; font-size:0.6rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--sand); margin-top:4px;">Mins</div>
+          </div>
+          <div style="font-family:'Cormorant Garamond',serif; font-size:2.4rem; font-weight:300; color:var(--gold); line-height:1; padding-top:2px;">:</div>
+          <div style="text-align:center;">
+            <div id="cd-secs" style="font-family:'Cormorant Garamond',serif; font-size:2.4rem; font-weight:500; color:var(--gold-bright); line-height:1;">00</div>
+            <div style="font-family:'Jost',sans-serif; font-size:0.6rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--sand); margin-top:4px;">Secs</div>
+          </div>
+        </div>
+        <p id="cd-live-msg" style="display:none; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.15rem; color:var(--gold-bright); text-align:center; margin-top:20px;">
+          ✦ The ceremony is live — join us now! ✦
+        </p>
       </div>
       <div style="display:flex; flex-direction:column; gap:12px;">
         <a href="https://youtube.com/live/QjOxdLIEkr4?feature=share"
@@ -1439,6 +1465,35 @@
     liveModal.addEventListener('click', e => { if (e.target === liveModal) closeLiveModal(); });
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLiveModal(); });
     liveModal.style.display = 'none';
+
+    /* ── Live stream countdown — 29 May 2026, 9:00 AM IST ── */
+    (function () {
+      const target = new Date('2026-05-29T09:00:00+05:30');
+      const cdEl   = document.getElementById('liveCountdown');
+      const liveEl = document.getElementById('cd-live-msg');
+
+      function pad(n) { return String(n).padStart(2, '0'); }
+
+      function tick() {
+        const diff = target - Date.now();
+        if (diff <= 0) {
+          cdEl.style.display  = 'none';
+          liveEl.style.display = 'block';
+          return;
+        }
+        const d = Math.floor(diff / 86400000);
+        const h = Math.floor((diff % 86400000) / 3600000);
+        const m = Math.floor((diff % 3600000)  / 60000);
+        const s = Math.floor((diff % 60000)    / 1000);
+        document.getElementById('cd-days').textContent  = pad(d);
+        document.getElementById('cd-hours').textContent = pad(h);
+        document.getElementById('cd-mins').textContent  = pad(m);
+        document.getElementById('cd-secs').textContent  = pad(s);
+      }
+
+      tick();
+      setInterval(tick, 1000);
+    })();
 
     /* ── Background music ── */
     const audio     = document.getElementById('bgMusic');
